@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebBlocks · Crea tu Web con Bloques</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-badge">🧱</div>
+            <div class="brand-info">
+                <h1>WebBlocks <span class="version-tag">v2.0</span></h1>
+                <p>Construye tu página web arrastrando bloques y mezclando opciones</p>
+            </div>
+        </div>
+
+        <div class="topbar-center">
+            <!-- Selector de Modo de Lienzo -->
+            <div class="mode-selector" title="Elige cómo organizar tus bloques en el espacio de trabajo">
+                <button id="modeFreeBtn" class="mode-btn active" data-mode="free">
+                    <span class="mode-icon">📐</span>
+                    <span>Modo Libre</span>
+                </button>
+                <button id="modeFlowBtn" class="mode-btn" data-mode="flow">
+                    <span class="mode-icon">📑</span>
+                    <span>Modo Flujo</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <button id="previewBtn" class="btn btn-secondary" title="Ver cómo queda tu página en pantalla completa">
+                <span>👁</span> Vista Previa
+            </button>
+
+            <button id="codeBtn" class="btn btn-secondary" title="Ver el código HTML, CSS y JavaScript generado">
+                <span>&lt;/&gt;</span> Ver Código
+            </button>
+
+            <button id="exportBtn" class="btn btn-primary" title="Descargar todos los archivos listos para usar">
+                <span>📦</span> Exportar Web
+            </button>
+
+            <button id="clearBtn" class="btn btn-danger-outline" title="Vaciar el lienzo">
+                <span>🗑</span> Limpiar
+            </button>
+        </div>
+    </header>
+
+    <!-- ESPACIO DE TRABAJO PRINCIPAL -->
+    <main class="workspace">
+
+        <!-- PANEL IZQUIERDO: PALETA DE BLOQUES -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bloques</h2>
+                <p>Arrastra los elementos hacia el lienzo</p>
+            </div>
+
+            <div class="sidebar-scrollable">
+                <!-- SECCIÓN: ELEMENTOS VISUALES & INTERACTIVOS -->
+                <section class="block-section">
+                    <div class="section-title">
+                        <span class="section-icon">🎨</span>
+                        <h3>Elementos Visuales</h3>
+                    </div>
+
+                    <div class="block-list">
+                        <div class="palette-block html-block" draggable="true" data-type="heading" title="Título principal grande para tu página">
+                            <div class="block-icon-badge header-badge">H1</div>
+                            <div class="block-info">
+                                <strong>Título Principal</strong>
+                                <span>Encabezado grande y llamativo</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="subheading" title="Subtítulo para organizar secciones">
+                            <div class="block-icon-badge subheader-badge">H2</div>
+                            <div class="block-info">
+                                <strong>Subtítulo</strong>
+                                <span>Encabezado secundario</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="paragraph" title="Texto descriptivo o párrafo">
+                            <div class="block-icon-badge text-badge">P</div>
+                            <div class="block-info">
+                                <strong>Párrafo de Texto</strong>
+                                <span>Texto explicativo o información</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="button" title="Botón interactivo">
+                            <div class="block-icon-badge btn-badge">BTN</div>
+                            <div class="block-info">
+                                <strong>Botón de Acción</strong>
+                                <span>Botón cliqueable estilizado</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="image" title="Foto o imagen ilustrativa">
+                            <div class="block-icon-badge img-badge">IMG</div>
+                            <div class="block-info">
+                                <strong>Imagen / Foto</strong>
+                                <span>Fotografía o ilustración</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="card" title="Tarjeta moderna para destacar contenido">
+                            <div class="block-icon-badge card-badge">🎴</div>
+                            <div class="block-info">
+                                <strong>Tarjeta / Card</strong>
+                                <span>Caja destacada con sombra</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="badge" title="Etiqueta pequeña destacada">
+                            <div class="block-icon-badge badge-badge">🏷</div>
+                            <div class="block-info">
+                                <strong>Etiqueta / Badge</strong>
+                                <span>Insignia pequeña</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="input" title="Campo de entrada de texto">
+                            <div class="block-icon-badge input-badge">✏</div>
+                            <div class="block-info">
+                                <strong>Campo de Entrada</strong>
+                                <span>Caja para escribir texto</span>
+                            </div>
+                        </div>
+
+                        <div class="palette-block html-block" draggable="true" data-type="divider" title="Línea decorativa para separar contenido">
+                            <div class="block-icon-badge divider-badge">―</div>
+                            <div class="block-info">
+                                <strong>Separador</strong>
+                                <span>Línea con grosor y color personalizable</span>
+                            </div>
+                        </div>
+
+                        <!-- BLOQUE INTERACTIVO: PREGUNTA, VARIABLE & CONDICIÓN LIGADA -->
+                        <div class="palette-block logic-block" draggable="true" data-type="question_condition" title="Hacer pregunta al usuario, guardar respuesta en variable y evaluar condición">
+                            <div class="block-icon-badge cond-badge">⚡</div>
+                            <div class="block-info">
+                                <strong>Pregunta & Condición (JS)</strong>
+                                <span>Pregunta ➔ Variable ➔ Condición</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONSEJO DIDÁCTICO -->
+                <div class="tip-card">
+                    <div class="tip-icon">💡</div>
+                    <div class="tip-body">
+                        <strong>¿Cómo funciona?</strong>
+                        <p>Arrastra bloques al lienzo. Selecciónalos en cualquier momento para editar su diseño, colores, grosor, o configurar preguntas y condiciones en JavaScript.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PANEL CENTRAL: LIENZO (CANVAS) -->
+        <section class="canvas-panel">
+            <div class="canvas-header">
+                <div class="canvas-title-group">
+                    <h2 id="projectTitle">Mi Página Web</h2>
+                    <span id="statusBadge" class="status-pill">0 bloques en el lienzo</span>
+                </div>
+
+                <div class="canvas-toolbar">
+                    <button id="undoBtn" class="canvas-tool-btn" title="Deshacer (Ctrl+Z)">↩ Deshacer</button>
+                    <button id="redoBtn" class="canvas-tool-btn" title="Rehacer (Ctrl+Y)">↪ Rehacer</button>
+                    <div class="canvas-mode-indicator">
+                        <span id="canvasModeLabel">📐 Posicionamiento Libre</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas-viewport" id="canvasViewport">
+                <div id="canvas" class="canvas free-mode" data-mode="free">
+                    <!-- Los bloques se renderizan dinámicamente aquí -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL DERECHO: INSPECTOR DE PROPIEDADES -->
+        <aside class="inspector">
+            <div class="inspector-header">
+                <h2>Diseño & Propiedades</h2>
+                <p>Personaliza el bloque seleccionado</p>
+            </div>
+
+            <div id="inspectorContent" class="inspector-body">
+                <!-- Contenido dinámico generado por ui.js -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- MODAL DE CÓDIGO GENERADO -->
+    <dialog id="codeModal" class="app-dialog">
+        <div class="modal-header">
+            <div class="modal-title-wrap">
+                <span class="modal-icon">&lt;/&gt;</span>
+                <div>
+                    <h2>Código de tu Página Web</h2>
+                    <p class="modal-subtitle">HTML, CSS y JavaScript generado automáticamente</p>
+                </div>
+            </div>
+            <button id="closeCode" class="modal-close-btn" title="Cerrar">✕</button>
+        </div>
+
+        <div class="code-tabs">
+            <button class="tab active" data-code-tab="html">
+                <span class="tab-dot html-dot"></span> index.html
+            </button>
+            <button class="tab" data-code-tab="css">
+                <span class="tab-dot css-dot"></span> style.css
+            </button>
+            <button class="tab" data-code-tab="js">
+                <span class="tab-dot js-dot"></span> script.js
+            </button>
+        </div>
+
+        <div class="code-container">
+            <pre><code id="codeOutput"></code></pre>
+        </div>
+
+        <div class="modal-actions">
+            <div class="code-explanation" id="codeExplanation">
+                💡 Este código está limpio, optimizado y listo para publicar en cualquier servidor web.
+            </div>
+            <div class="modal-btn-group">
+                <button id="copyCode" class="btn btn-secondary">
+                    📋 Copiar Código
+                </button>
+                <button id="downloadCode" class="btn btn-primary">
+                    💾 Descargar Archivo
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- MODAL DE VISTA PREVIA (CON SIMULADOR DE DISPOSITIVOS) -->
+    <dialog id="previewModal" class="app-dialog preview-dialog">
+        <div class="modal-header preview-header">
+            <div class="modal-title-wrap">
+                <span class="modal-icon">👁</span>
+                <div>
+                    <h2>Vista Previa en Vivo</h2>
+                    <p class="modal-subtitle">Prueba tu página exactamente como la verán tus visitantes</p>
+                </div>
+            </div>
+
+            <!-- Selector de Dispositivos -->
+            <div class="device-switcher">
+                <button class="device-btn active" data-device="desktop" title="Vista en Computadora">
+                    🖥 Escritorio
+                </button>
+                <button class="device-btn" data-device="tablet" title="Vista en Tableta">
+                    📟 Tableta
+                </button>
+                <button class="device-btn" data-device="mobile" title="Vista en Celular">
+                    📱 Móvil
+                </button>
+            </div>
+
+            <button id="closePreview" class="modal-close-btn" title="Cerrar">✕</button>
+        </div>
+
+        <div class="preview-stage" id="previewStage">
+            <div class="device-frame desktop" id="deviceFrame">
+                <iframe id="previewFrame" title="Vista previa interactiva"></iframe>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- SCRIPTS DE LA APLICACIÓN -->
+    <script src="js/state.js"></script>
+    <script src="js/blocks.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

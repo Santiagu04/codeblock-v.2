@@ -1,0 +1,15 @@
+{
+  "name": "codeblock-v.1",
+  "version": "1.0.0",
+  "description": "WebBlocks - Del bloque al código",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
